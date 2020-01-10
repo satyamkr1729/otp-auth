@@ -4,6 +4,7 @@ const readConfig = require('jsonfile').readFileSync;
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const process = require('process');
 
 const login = require('./controllers/routes/login');
 
@@ -29,6 +30,6 @@ app.get('/', (req, res) => {
 
 app.use('/login', login);
 
-app.listen(global.__config.port, () => {
+app.listen(process.env.PORT || global.__config.port, () => {
   console.log(`Server started at port ${global.__config.port}`);
 });
