@@ -5,16 +5,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const process = require('process');
-const countryCodes = require('country-data');
 
 const login = require('./controllers/routes/login');
-
-const telephoneCodes = [];
-for (const val of Object.values(countryCodes.callingCountries)) {
-  if (val.countryCallingCodes && (!telephoneCodes.length || telephoneCodes[telephoneCodes.length - 1].country != val.alpha2)) {
-    telephoneCodes.push({country: val.alpha2, emoji: val.emoji, code: val.countryCallingCodes[0]});
-  }
-}
+const firebase = require('./controllers/routes/firebase');
 
 let config;
 try {
@@ -36,9 +29,7 @@ app.get('/', (req, res) => {
   res.redirect('/login');
 });
 
-app.get('/firebase', (req, res) => {
-  res.render('verify.pug', {telephoneCodes});
-});
+app.use('/firebase', firebase);
 
 app.use('/login', login);
 

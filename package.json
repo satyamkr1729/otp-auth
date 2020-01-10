@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.4",
     "country-data": "0.0.31",
     "express": "^4.17.1",
+    "jose": "^1.18.2",
     "jsonfile": "^5.0.0",
     "pug": "^2.0.4",
     "speakeasy": "^2.0.0",

@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 const firebaseConfig = {
-  apiKey: 'AIzaSyAfbf_wnJiuakat0Wvb-xFlDuBL-oVd8N0',
   authDomain: 'dracarys-6788a.firebaseapp.com',
   databaseURL: 'https://dracarys-6788a.firebaseio.com',
   projectId: 'dracarys-6788a',
@@ -10,12 +9,28 @@ const firebaseConfig = {
   appId: '1:247047365435:web:996bd9b00b1e907fed0d1e',
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+try {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '/firebase/apikey');
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const response = JSON.parse(this.responseText);
+      firebaseConfig.apiKey = response.apiKey;
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.auth().useDeviceLanguage();
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      document.querySelector('div#busy').style.display = 'none';
+    }
+  };
 
-firebase.auth().useDeviceLanguage();
-
-window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+  xhr.onerror = function() {
+    console.log('Failed to fetch firebase apikey');
+  };
+  xhr.send();
+} catch (err) {
+  console.log(err);
+};
 
 document.querySelector('div.phonenumber form').addEventListener('submit', (ev) => {
   ev.preventDefault();

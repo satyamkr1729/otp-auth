@@ -2,7 +2,6 @@
     "port": 8081,
     "twilioPhone": "+15034769247",
     "firebase": {
-        "apiKey": "AIzaSyAfbf_wnJiuakat0Wvb-xFlDuBL-oVd8N0",
         "authDomain": "dracarys-6788a.firebaseapp.com",
         "databaseURL": "https://dracarys-6788a.firebaseio.com",
         "projectId": "dracarys-6788a",
