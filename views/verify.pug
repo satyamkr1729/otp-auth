@@ -1,0 +1,31 @@
+html
+    head
+        title Home
+        link(rel="stylesheet", href="/assets/css/style.css")
+    body
+        div(class="container phonenumber")
+            form
+                label Mobile Number:
+                div(class="number-container")
+                    select(name="countryCode", class="form-element")
+                        each val in telephoneCodes
+                            if val.country === 'IN'
+                                option(value=val.code selected) #{val.emoji}
+                            else
+                                option(value=val.code) #{val.emoji}
+                    input(type="tel", name="mobile", pattern="[0-9]*", class="form-element", title="Mobile Number" style="width: 100%" required)
+                input(type="submit", value="Send OTP", class="form-element button" id="send-otp")
+                div(id="recaptcha-container")
+
+        div(class="container otp")
+            form
+                label OTP:
+                input(type="text", name="otp", pattern="[0-9]{6}", class="form-element", title="6 digit otp", required)
+                input(type="submit", value="submit", class="form-element button")
+
+        div(class="container welcome")
+            h1 This is Satyam Kumar
+
+    script(src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js")
+    script(src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js")
+    script(src="/assets/js/firebase.js")

@@ -1,4 +1,13 @@
 {
     "port": 8081,
-    "twilioPhone": "+15034769247"
+    "twilioPhone": "+15034769247",
+    "firebase": {
+        "apiKey": "AIzaSyAfbf_wnJiuakat0Wvb-xFlDuBL-oVd8N0",
+        "authDomain": "dracarys-6788a.firebaseapp.com",
+        "databaseURL": "https://dracarys-6788a.firebaseio.com",
+        "projectId": "dracarys-6788a",
+        "storageBucket": "dracarys-6788a.appspot.com",
+        "messagingSenderId": "247047365435",
+        "appId": "1:247047365435:web:996bd9b00b1e907fed0d1e"
+    }
 }

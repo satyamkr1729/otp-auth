@@ -48,3 +48,11 @@ form {
     color: red;
     font-weight: bold;
 }
+
+.otp , .welcome{
+    display: none;
+}
+
+#recaptcha-container {
+    margin-top: 5px;
+}
