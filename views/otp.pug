@@ -1,0 +1,12 @@
+html
+    head
+        title otp 
+        link(rel="stylesheet", href="/assets/css/style.css")
+    body
+        div(class="container")
+            if retry
+                span(class="error") Message: Invalid OTP!!
+            form(method="POST", action="/login/verify")
+                label OTP:
+                input(type="text", name="otp", pattern="[0-9]{6}", class="form-element", title="6 digit otp", required)
+                input(type="submit", value="submit", class="form-element button")
