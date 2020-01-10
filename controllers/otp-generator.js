@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 const speakeasy = require('speakeasy');
+const twilio = require('./twilio');
 
 const otp = {};
 
@@ -17,6 +18,7 @@ otp.generateOtp = function(secret) {
 otp.sendOtp = function(number, token) {
   console.log(number);
   console.log(token);
+  twilio.sendMessage(`Your OTP for login is ${token}`, number);
 };
 
 otp.verify = function(secret, token) {
@@ -24,6 +26,7 @@ otp.verify = function(secret, token) {
     secret,
     token,
     encoding: 'base32',
+    window: 1,
   });
 };
 

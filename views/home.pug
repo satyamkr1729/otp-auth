@@ -4,7 +4,10 @@ home
     body
         form(method="POST", action="/login/sendotp")
             span Mobile Number:
-            input(type="text", name="mobile")
+            select(name="countryCode")
+                each val in telephoneCodes
+                    option(value=val.code) #{val.emoji}
+            input(type="tel", name="mobile")
             input(type="submit", value="Send Otp")
 
         form(method="POST", action="/login/verify")
